@@ -18,10 +18,20 @@
         <ul id="pile_two"></ul>
         <ul id="pile_three"></ul>
 
-        <div id="player_one_cards"><ul id="player_one_cards_list"></ul></div>
-        <div id="player_two_cards"><ul id="player_two_cards_list"></ul></div>
+        <div id="player_one_cards">
+            <h2>Player One:</h2>
+            <ul id="player_one_cards_list"></ul>
+        </div>
+        
+        <div id="player_two_cards">
+            <h2>Player Two:</h2>
+            <ul id="player_two_cards_list"></ul>
+        </div>
 
         <div id="unused_cards"></div>
+
+        <button id="skip_button" pys-onClick="action_skip">Skip</button>
+        <button id="take_button" pys-onClick="action_take">Take</button>
 
         <py-env>
             - paths:

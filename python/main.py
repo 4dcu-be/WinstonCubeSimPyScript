@@ -5,11 +5,11 @@ from js import (
     console,
     document)
 
-def render_card(card: dict, current_player: int, show_hidden: bool = False):
+def render_card(card: dict, current_player: int, show_hidden: bool = False, tag='li'):
     if show_hidden or "seen" not in card.keys() or card["seen"][current_player]:
-        return f"<li>{card['name']}</li>"
+        return f"<{tag}>{card['name']}</{tag}>"
     else:
-        return "<li>**hidden**</li>"
+        return f"<{tag}>**hidden**</{tag}>"
 
 
 def update_counts(cube):
@@ -49,6 +49,23 @@ def update(cube):
 
 
 current_cube = CubeData()
+
+def action_skip(*ags, **kws):
+    console.log("skip")
+
+    global current_cube
+    current_cube.skip()
+    current_cube.reveal_cards()
+    update(current_cube)
+
+
+def action_take(*ags, **kws):
+    console.log("take")
+
+    global current_cube
+    current_cube.take_pile()
+    current_cube.reveal_cards()
+    update(current_cube)
 
 ## Starting Game
 current_cube.cards = cards
