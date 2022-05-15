@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+        <Title>Winston Cube: PyScript Test</Title>
+
+        <link rel="icon" href="./favicon.ico" />
+        <link rel="stylesheet" href="./pyscript/pyscript.css" />
+        <script defer src="./pyscript/pyscript.js"></script>
+    </head>
+    <body>
+        <div>Cards in cube: <span id=card_count></span></div>
+        <div>Cards in main pile/used: <span id=main_pile_count></span> / <span id=used_count></span></div>
+
+        <ul id="pile_one"></ul>
+        <ul id="pile_two"></ul>
+        <ul id="pile_three"></ul>
+
+        <div id="player_one_cards"><ul id="player_one_cards_list"></ul></div>
+        <div id="player_two_cards"><ul id="player_two_cards_list"></ul></div>
+
+        <div id="unused_cards"></div>
+
+        <py-env>
+            - paths:
+                - ./python/cubedata/cubedata.py
+                - ./python/cubedata/cards.py
+        </py-env>
+
+        <py-script src='./python/main.py'></py-script>
+
+    <template id="list-item-template">
+            <li class="m-0 inline">template</li>
+    </template>
+    </body>
+</html>
