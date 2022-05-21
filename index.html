@@ -14,6 +14,25 @@
         <script defer src="./pyscript/pyscript.js"></script>
     </head>
     <body>
+        <div class="modal active" id="modal-id">
+            <a href="#close" class="modal-overlay" aria-label="Close"></a>
+            <div class="modal-container">
+              <div class="modal-header">
+                <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
+                <div class="modal-title h5">Starting App</div>
+              </div>
+              <div class="modal-body">
+                <div class="content">
+                    <div class="column col-12 text-center">
+                        <div class="loading loading-lg"></div>
+                      </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+
         <div class="container">
         <div>Cards in cube: <strong><span id=card_count></span></strong></div>
         <div>Cards in main pile/used: <strong><span id=main_pile_count></span> / <span id=used_count></span></strong></div>
@@ -55,16 +74,23 @@
 
         <div class="columns">
             <div class="column">
-                <div id="player_one_cards" class="player-panel">
-                    <h2>Player One:</h2>
-                    <ul id="player_one_cards_list"></ul>
+                <div id="player_one_cards" class="panel player-panel">
+                    <div class="panel-header text-center">
+                        <div class="panel-title h5">Player One</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="player_one_cards_list"></ul>
+                    </div>
                 </div>
             </div>
-            <div class="divider-vert" data-content=""></div>
             <div class="column">
-                <div id="player_two_cards" class="player-panel">
-                    <h2>Player Two:</h2>
-                    <ul id="player_two_cards_list"></ul>
+                <div id="player_two_cards" class="panel player-panel">
+                    <div class="panel-header text-center">
+                        <div class="panel-title h5">Player Two</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="player_two_cards_list"></ul>
+                    </div>
                 </div>
             </div>
         </div>

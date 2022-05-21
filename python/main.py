@@ -80,6 +80,10 @@ def action_take(*ags, **kws):
     current_cube.reveal_cards()
     update(current_cube)
 
+## Hide modal
+modal = Element("modal-id")
+modal.remove_class("active")
+
 ## Starting Game
 current_cube.cards = cards
 current_cube.shuffle_cards()
