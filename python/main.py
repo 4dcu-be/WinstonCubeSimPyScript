@@ -7,7 +7,7 @@ from js import (
 
 def render_card(card: dict, current_player: int, show_hidden: bool = False, tag='li'):
     if show_hidden or "seen" not in card.keys() or card["seen"][current_player]:
-        return f"<{tag}>{card['name']}</{tag}>"
+        return f"<{tag} class=\"card-{card['color']}\">{card['name']}</{tag}>"
     else:
         return f"<{tag}>**hidden**</{tag}>"
 
@@ -17,6 +17,17 @@ def update_counts(cube):
     pyscript.write('main_pile_count', len(cube.shuffled_cards))
     pyscript.write('used_count', cube.cards_used)
 
+def update_pile_panels(cube):
+    pile_panel_ids = ["pile-panel-one", "pile-panel-two", "pile-panel-three"]
+
+    for ix, pile_panel_id in enumerate(pile_panel_ids):
+        pile_panel = Element(pile_panel_id)
+
+        if ix == cube.current_pile:
+            pile_panel.add_class("current-pile-panel")
+        else:
+            pile_panel.remove_class("current-pile-panel")
+            
 
 def update_piles(cube):
     pile_list_ids = ["pile_one", "pile_two", "pile_three"]
@@ -42,6 +53,8 @@ def update_players(cube):
 def update(cube):
 
     update_counts(cube)
+
+    update_pile_panels(cube)
 
     update_piles(cube)
 

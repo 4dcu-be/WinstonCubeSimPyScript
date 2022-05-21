@@ -1,0 +1,44 @@
+.pile-panel {
+    padding:2px;
+    height:300px;
+    overflow-y:auto
+}
+
+.current-pile-panel {
+    padding:0px;
+    border-color: midnightblue;
+    border-width: medium;
+}
+
+.player-panel {
+    height:250px;
+    overflow-y:auto
+}
+
+.card-M {
+  color: gold;
+}
+
+.card-C {
+    color: SaddleBrown;
+}
+
+.card-R {
+    color: red;
+}
+
+.card-W {
+    color: tan;
+}
+
+.card-G {
+    color: green;
+}
+
+.card-U {
+    color: cadetblue;
+}
+
+.card-B {
+    color: black;
+}

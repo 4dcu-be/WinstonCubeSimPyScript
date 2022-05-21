@@ -7,42 +7,87 @@
         <Title>Winston Cube: PyScript Test</Title>
 
         <link rel="icon" href="./favicon.ico" />
+        <link rel="stylesheet" href="./css/spectre.min.css">
+        <link rel="stylesheet" href="./css/main.css">
+
         <link rel="stylesheet" href="./pyscript/pyscript.css" />
         <script defer src="./pyscript/pyscript.js"></script>
     </head>
     <body>
-        <div>Cards in cube: <span id=card_count></span></div>
-        <div>Cards in main pile/used: <span id=main_pile_count></span> / <span id=used_count></span></div>
+        <div class="container">
+        <div>Cards in cube: <strong><span id=card_count></span></strong></div>
+        <div>Cards in main pile/used: <strong><span id=main_pile_count></span> / <span id=used_count></span></strong></div>
+        <br />
 
-        <ul id="pile_one"></ul>
-        <ul id="pile_two"></ul>
-        <ul id="pile_three"></ul>
-
-        <div id="player_one_cards">
-            <h2>Player One:</h2>
-            <ul id="player_one_cards_list"></ul>
+        <div class="columns">
+            <div class="column col-4">
+                <div class="panel pile-panel" id="pile-panel-one">
+                    <div class="panel-header text-center">
+                        <div class="panel-title h5">Pile One</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="pile_one"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="column col-4">
+                <div class="panel pile-panel" id="pile-panel-two">
+                    <div class="panel-header text-center">
+                        <div class="panel-title h5">Pile Two</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="pile_two"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="column col-4">
+                <div class="panel pile-panel" id="pile-panel-three">
+                    <div class="panel-header text-center">
+                        <div class="panel-title h5">Pile Three</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="pile_three"></ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div id="player_two_cards">
-            <h2>Player Two:</h2>
-            <ul id="player_two_cards_list"></ul>
+        <br />
+
+        <div class="columns">
+            <div class="column">
+                <div id="player_one_cards" class="player-panel">
+                    <h2>Player One:</h2>
+                    <ul id="player_one_cards_list"></ul>
+                </div>
+            </div>
+            <div class="divider-vert" data-content=""></div>
+            <div class="column">
+                <div id="player_two_cards" class="player-panel">
+                    <h2>Player Two:</h2>
+                    <ul id="player_two_cards_list"></ul>
+                </div>
+            </div>
         </div>
+        <br />
 
-        <div id="unused_cards"></div>
+        <div class="columns">
+            <div class="column col-12">
+                <div id="unused_cards"></div>
+            </div>
+        </div>
+        <br />
 
-        <button id="skip_button" pys-onClick="action_skip">Skip</button>
-        <button id="take_button" pys-onClick="action_take">Take</button>
+        <button id="skip_button" pys-onClick="action_skip" class="btn btn-primary">Skip</button>
+        <button id="take_button" pys-onClick="action_take" class="btn btn-primary">Take</button>
 
-        <py-env>
-            - paths:
-                - ./python/cubedata/cubedata.py
-                - ./python/cubedata/cards.py
-        </py-env>
+    </div>
+    <py-env>
+        - paths:
+            - ./python/cubedata/cubedata.py
+            - ./python/cubedata/cards.py
+    </py-env>
 
-        <py-script src='./python/main.py'></py-script>
+    <py-script src='./python/main.py'></py-script>
 
-    <template id="list-item-template">
-            <li class="m-0 inline">template</li>
-    </template>
     </body>
 </html>

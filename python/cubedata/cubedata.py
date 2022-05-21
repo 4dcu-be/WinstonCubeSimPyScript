@@ -11,27 +11,6 @@ def parse_color(color):
         return "C"  # Colorless
 
 
-color_to_rich = {
-    "U": "rgb(14,104,171)",
-    "G": "rgb(0,115,62)",
-    "R": "rgb(211,32,42)",
-    "W": "rgb(248,231,185)",
-    "B": "rgb(166,159,157)",
-    "C": "dark_khaki",
-    "M": "gold1",
-}
-
-
-def render_card(card: dict, current_player: int, show_hidden: bool = False):
-    if show_hidden or "seen" not in card.keys() or card["seen"][current_player]:
-
-        color = color_to_rich[card["color"]]
-
-        return f"[{color}]{card['name']}[/{color}]"
-    else:
-        return "**hidden**"
-
-
 class CubeData:
     def __init__(self, enable_ai: bool = True, draft_size: int = 90):
         self.cards = []
