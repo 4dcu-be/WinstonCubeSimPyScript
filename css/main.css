@@ -42,3 +42,7 @@
 .card-B {
     color: black;
 }
+
+.hidden {
+    display: none;
+}

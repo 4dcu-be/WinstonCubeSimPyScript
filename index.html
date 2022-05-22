@@ -98,14 +98,22 @@
 
         <div class="columns">
             <div class="column col-12">
-                <div id="unused_cards"></div>
+                <div id="unused_cards" class="panel player-panel hidden">
+                    <div class="panel-header text-center">
+                        <div class="panel-title h5">Unused cards</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="unused_cards_list"></ul>
+                    </div>
+                </div>
             </div>
         </div>
         <br />
 
+        <button id="restart_button" pys-onClick="action_restart" class="btn">Restart</button>
         <button id="skip_button" pys-onClick="action_skip" class="btn btn-primary">Skip</button>
         <button id="take_button" pys-onClick="action_take" class="btn btn-primary">Take</button>
-
+        
     </div>
     <py-env>
         - paths:

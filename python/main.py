@@ -49,6 +49,18 @@ def update_players(cube):
         player_list = Element(player_list_id)
         player_list.element.innerHTML = '\n'.join(list_entries)
 
+def update_unused(cube):
+    unused_panel = Element("unused_cards")
+    unused_list = Element("unused_cards_list")
+
+    if cube.finished_draft:
+        unused_panel.remove_class("hidden")
+        list_entries = [render_card(c, cube.current_player, show_hidden=True) for c in cube.unused_cards]
+        unused_list.element.innerHTML = '\n'.join(list_entries)
+    else:
+        unused_panel.add_class("hidden")
+
+        unused_list.element.innerHTML = ""
 
 def update(cube):
 
@@ -59,6 +71,8 @@ def update(cube):
     update_piles(cube)
 
     update_players(cube)
+
+    update_unused(cube)
 
 
 current_cube = CubeData()
@@ -80,23 +94,22 @@ def action_take(*ags, **kws):
     current_cube.reveal_cards()
     update(current_cube)
 
+
+def action_restart(*ags, **kws):
+    console.log("restart")
+
+    global current_cube
+    current_cube.init_game()
+    update(current_cube)
+
 ## Hide modal
 modal = Element("modal-id")
 modal.remove_class("active")
 
 ## Starting Game
 current_cube.cards = cards
-current_cube.shuffle_cards()
 
-current_cube.piles = [
-    [current_cube.shuffled_cards.pop()],
-    [current_cube.shuffled_cards.pop()],
-    [current_cube.shuffled_cards.pop()],
-]
-
-current_cube.players = [[], []]
-
-current_cube.reveal_cards()
+current_cube.init_game()
 
 update(current_cube)
 
