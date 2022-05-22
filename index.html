@@ -14,7 +14,25 @@
         <script defer src="./pyscript/pyscript.js"></script>
     </head>
     <body>
-        <div class="modal active" id="modal-id">
+        <div class="modal active" id="loading-modal">
+            <a href="#close" class="modal-overlay" aria-label="Close"></a>
+            <div class="modal-container">
+              <div class="modal-header">
+                <div class="modal-title h5">Starting App</div>
+              </div>
+              <div class="modal-body">
+                <div class="content">
+                    <div class="column col-12 text-center">
+                        <div class="loading loading-lg"></div>
+                      </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="modal active" id="modal-id">
             <a href="#close" class="modal-overlay" aria-label="Close"></a>
             <div class="modal-container">
               <div class="modal-header">
@@ -31,7 +49,7 @@
               <div class="modal-footer">
               </div>
             </div>
-          </div>
+          </div> -->
 
         <div class="container">
         <div>Cards in cube: <strong><span id=card_count></span></strong></div>

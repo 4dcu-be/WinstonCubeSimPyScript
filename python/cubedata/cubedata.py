@@ -52,7 +52,27 @@ class CubeData:
     def finished_draft(self) -> bool:
         return self.main_pile_empty and self.piles_empty
         
+    def read_cube_url(self, url: str):
+        """
+        Reads a CSV file with cards, from a URL (e.g. from CubeCobra)
 
+        :param url: location of the CSV file
+        """
+        self.cards = []
+
+        response = urllib.request.urlopen(url)
+        lines = [line.decode('utf-8') for line in response.readlines()]
+        csvreader = Reader(lines, delimiter=",", quotechar='"')
+        for row in csvreader:
+            self.cards.append(
+                {
+                    "name": row["Name"],
+                    "mana_value": int(row["CMC"]),
+                    "type": row["Type"],
+                    "color": parse_color(row["Color"]),
+                }
+            )
+            
     def read_cube_csv(self, filename: str):
         """
         Reads a CSV file with cards, lists from www.cubecobra.com can be exported in this format

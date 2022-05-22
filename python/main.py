@@ -105,7 +105,7 @@ def action_restart(*ags, **kws):
     update(current_cube)
 
 ## Hide modal
-modal = Element("modal-id")
+modal = Element("loading-modal")
 modal.remove_class("active")
 
 ## Starting Game
