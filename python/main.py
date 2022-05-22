@@ -81,8 +81,9 @@ def action_skip(*ags, **kws):
     console.log("skip")
 
     global current_cube
-    current_cube.skip()
-    current_cube.reveal_cards()
+    if not current_cube.finished_draft:
+        current_cube.skip()
+        current_cube.reveal_cards()
     update(current_cube)
 
 
@@ -90,8 +91,9 @@ def action_take(*ags, **kws):
     console.log("take")
 
     global current_cube
-    current_cube.take_pile()
-    current_cube.reveal_cards()
+    if not current_cube.finished_draft:
+        current_cube.take_pile()
+        current_cube.reveal_cards()
     update(current_cube)
 
 
