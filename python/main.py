@@ -36,7 +36,7 @@ def update_piles(cube):
         pile_list = Element(pile_list_id)
         pile_list.clear()
         
-        list_entries = [render_card(c, cube.current_player) for c in pile]
+        list_entries = [render_card(c, cube.current_player, show_hidden=cube.finished_draft) for c in pile]
 
         pile_list.element.innerHTML = '\n'.join(list_entries)
 
@@ -45,7 +45,7 @@ def update_players(cube):
     player_list_ids = ["player_one_cards_list", "player_two_cards_list"]
 
     for ix, player_list_id in enumerate(player_list_ids):
-        list_entries = [render_card(c, cube.current_player) for c in cube.players[ix]]
+        list_entries = [render_card(c, cube.current_player, show_hidden=cube.finished_draft) for c in cube.players[ix]]
         player_list = Element(player_list_id)
         player_list.element.innerHTML = '\n'.join(list_entries)
 
@@ -55,7 +55,7 @@ def update_unused(cube):
 
     if cube.finished_draft:
         unused_panel.remove_class("hidden")
-        list_entries = [render_card(c, cube.current_player, show_hidden=True) for c in cube.unused_cards]
+        list_entries = [render_card(c, cube.current_player, show_hidden=cube.finished_draft) for c in cube.unused_cards]
         unused_list.element.innerHTML = '\n'.join(list_entries)
     else:
         unused_panel.add_class("hidden")
