@@ -1,5 +1,6 @@
 from csv import DictReader as Reader
 from random import sample, choice
+import re
 
 import pyodide
 
@@ -53,17 +54,11 @@ class CubeData:
     @property
     def finished_draft(self) -> bool:
         return self.main_pile_empty and self.piles_empty
-        
-    def read_cube_url(self, url: str):
-        """
-        Reads a CSV file with cards, from a URL (e.g. from CubeCobra)
-
-        :param url: location of the CSV file
-        """
+    
+    def read_cube_text(self, text:str):
         self.cards = []
 
-        response = pyodide.open_url(url)
-        lines = response.read().split('\n')
+        lines = text.split('\n')
         csvreader = Reader(lines, delimiter=",", quotechar='"')
         for row in csvreader:
             self.cards.append(
@@ -74,6 +69,17 @@ class CubeData:
                     "color": parse_color(row["Color"]),
                 }
             )
+
+    def read_cube_url(self, url: str):
+        """
+        Reads a CSV file with cards, from a URL (e.g. from CubeCobra)
+
+        :param url: location of the CSV file
+        """
+
+        response = pyodide.open_url(url)
+        self.read_cube_text(response.read())
+
             
     def read_cube_csv(self, filename: str):
         """
@@ -81,19 +87,9 @@ class CubeData:
 
         :param filename: path to the file
         """
-        self.cards = []
 
         with open(filename) as csvfile:
-            csvreader = Reader(csvfile, delimiter=",", quotechar='"')
-            for row in csvreader:
-                self.cards.append(
-                    {
-                        "name": row["Name"],
-                        "mana_value": int(row["CMC"]),
-                        "type": row["Type"],
-                        "color": parse_color(row["Color"]),
-                    }
-                )
+            self.read_cube_text(csvfile.read())
 
     def reveal_cards(self):
         """

@@ -1,5 +1,4 @@
 from cubedata import CubeData
-from cards import cards
 
 from js import (
     console,
@@ -100,11 +99,11 @@ def action_take(*ags, **kws):
 def action_restart(*ags, **kws):
     console.log("restart")
 
-    modal = Element("url-modal")
+    modal = Element("cube-modal")
     modal.add_class("active")
 
-def action_start(*ags, **kws):
-    console.log("start")
+def action_start_from_url(*ags, **kws):
+    console.log("start_from_url")
 
     url_input = Element("url-input")
     url = url_input.value
@@ -114,14 +113,26 @@ def action_start(*ags, **kws):
     current_cube.init_game()
     update(current_cube)
 
-    url_modal = Element("url-modal")
-    url_modal.remove_class("active")
+    cube_modal = Element("cube-modal")
+    cube_modal.remove_class("active")
 
+def action_start_from_text(*ags, **kws):
+    console.log("start_from_text")
 
+    text_input = Element("text-input")
+    text = text_input.value
+
+    global current_cube
+    current_cube.read_cube_text(text)
+    current_cube.init_game()
+    update(current_cube)
+
+    cube_modal = Element("cube-modal")
+    cube_modal.remove_class("active")
 
 ## Hide modal
 modal = Element("loading-modal")
 modal.remove_class("active")
 
-url_modal = Element("url-modal")
-url_modal.add_class("active")
+cube_modal = Element("cube-modal")
+cube_modal.add_class("active")
