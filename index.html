@@ -24,32 +24,34 @@
                 <div class="content">
                     <div class="column col-12 text-center">
                         <div class="loading loading-lg"></div>
-                      </div>
+                    </div>
                 </div>
               </div>
               <div class="modal-footer">
               </div>
             </div>
-          </div>
+        </div>
 
-          <!-- <div class="modal active" id="modal-id">
+        <div class="modal" id="url-modal">
             <a href="#close" class="modal-overlay" aria-label="Close"></a>
             <div class="modal-container">
               <div class="modal-header">
-                <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
-                <div class="modal-title h5">Starting App</div>
+                <div class="modal-title h5">Enter decklist url:</div>
               </div>
               <div class="modal-body">
                 <div class="content">
                     <div class="column col-12 text-center">
-                        <div class="loading loading-lg"></div>
-                      </div>
+                        <div class="form-group">
+                            <input class="form-input" type="text" id="url-input" value="data/PremodernSultaiWinston_v2.csv">
+                          </div>
+                    </div>
                 </div>
               </div>
               <div class="modal-footer">
+                <button id="start_button" pys-onClick="action_start" class="btn">Start</button>
               </div>
             </div>
-          </div> -->
+        </div>
 
         <div class="container">
         <div>Cards in cube: <strong><span id=card_count></span></strong></div>

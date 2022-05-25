@@ -100,18 +100,28 @@ def action_take(*ags, **kws):
 def action_restart(*ags, **kws):
     console.log("restart")
 
+    modal = Element("url-modal")
+    modal.add_class("active")
+
+def action_start(*ags, **kws):
+    console.log("start")
+
+    url_input = Element("url-input")
+    url = url_input.value
+
     global current_cube
+    current_cube.read_cube_url(url)
     current_cube.init_game()
     update(current_cube)
+
+    url_modal = Element("url-modal")
+    url_modal.remove_class("active")
+
+
 
 ## Hide modal
 modal = Element("loading-modal")
 modal.remove_class("active")
 
-## Starting Game
-current_cube.cards = cards
-
-current_cube.init_game()
-
-update(current_cube)
-
+url_modal = Element("url-modal")
+url_modal.add_class("active")

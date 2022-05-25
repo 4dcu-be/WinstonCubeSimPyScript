@@ -1,6 +1,8 @@
 from csv import DictReader as Reader
 from random import sample, choice
 
+import pyodide
+
 
 def parse_color(color):
     if len(color) == 1:
@@ -60,8 +62,8 @@ class CubeData:
         """
         self.cards = []
 
-        response = urllib.request.urlopen(url)
-        lines = [line.decode('utf-8') for line in response.readlines()]
+        response = pyodide.open_url(url)
+        lines = response.read().split('\n')
         csvreader = Reader(lines, delimiter=",", quotechar='"')
         for row in csvreader:
             self.cards.append(
