@@ -1,6 +1,5 @@
 from csv import DictReader as Reader
 from random import sample, choice
-import re
 
 import pyodide
 

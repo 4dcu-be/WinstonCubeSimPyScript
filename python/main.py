@@ -4,6 +4,8 @@ from js import (
     console,
     document)
 
+current_cube = CubeData()
+
 def render_card(card: dict, current_player: int, show_hidden: bool = False, tag='li'):
     if show_hidden or "seen" not in card.keys() or card["seen"][current_player]:
         return f"<{tag} class=\"card-{card['color']}\">{card['name']}</{tag}>"
@@ -73,9 +75,6 @@ def update(cube):
 
     update_unused(cube)
 
-
-current_cube = CubeData()
-
 def action_skip(*ags, **kws):
     console.log("skip")
 
@@ -130,7 +129,14 @@ def action_start_from_text(*ags, **kws):
     cube_modal = Element("cube-modal")
     cube_modal.remove_class("active")
 
-## Hide modal
+def action_click_card(*ags, **kws):
+    card_name = ags[0].path[0].innerHTML
+    if card_name != "**hidden**":
+        console.log(card_name, "clicked")
+
+
+## Start Here
+
 modal = Element("loading-modal")
 modal.remove_class("active")
 
