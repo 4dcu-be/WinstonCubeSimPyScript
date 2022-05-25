@@ -64,6 +64,25 @@
             </div>
         </div>
 
+        <div class="modal" id="card-modal">
+            <a href="#close" class="modal-overlay" aria-label="Close"></a>
+            <div class="modal-container">
+              <div class="modal-header">
+                <a href="#close" class="btn btn-clear float-right" aria-label="Close" id="close_card_modal" pys-onClick="action_close_card_modal"></a>
+                <div class="modal-title h5">Card Image</div>
+              </div>
+              <div class="modal-body">
+                <div class="content">
+                    <div class="column col-12 text-center">
+                        <img src="" id="card-image" class="img-fit-contain"/>
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+        </div>
+
         <div class="container">
         <div>Cards in cube: <strong><span id=card_count></span></strong></div>
         <div>Cards in main pile/used: <strong><span id=main_pile_count></span> / <span id=used_count></span></strong></div>
@@ -110,7 +129,7 @@
                         <div class="panel-title h5">Player One</div>
                     </div>
                     <div class="panel-body">
-                        <ul id="player_one_cards_list"></ul>
+                        <ul id="player_one_cards_list" pys-onClick="action_click_card"></ul>
                     </div>
                 </div>
             </div>
@@ -120,7 +139,7 @@
                         <div class="panel-title h5">Player Two</div>
                     </div>
                     <div class="panel-body">
-                        <ul id="player_two_cards_list"></ul>
+                        <ul id="player_two_cards_list" pys-onClick="action_click_card"></ul>
                     </div>
                 </div>
             </div>
@@ -134,7 +153,7 @@
                         <div class="panel-title h5">Unused cards</div>
                     </div>
                     <div class="panel-body">
-                        <ul id="unused_cards_list"></ul>
+                        <ul id="unused_cards_list" pys-onClick="action_click_card"></ul>
                     </div>
                 </div>
             </div>

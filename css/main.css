@@ -16,30 +16,37 @@
 }
 
 .card-M {
+  cursor: pointer;  
   color: gold;
 }
 
 .card-C {
+    cursor: pointer;  
     color: SaddleBrown;
 }
 
 .card-R {
+    cursor: pointer;  
     color: red;
 }
 
 .card-W {
+    cursor: pointer;  
     color: tan;
 }
 
 .card-G {
+    cursor: pointer;  
     color: green;
 }
 
 .card-U {
+    cursor: pointer;  
     color: cadetblue;
 }
 
 .card-B {
+    cursor: pointer;  
     color: black;
 }
 
@@ -51,4 +58,10 @@ textarea {
     white-space: pre;
     overflow-wrap: normal;
     overflow-x: scroll;
-  }
+}
+
+#card-image {
+    margin-left: auto;
+    max-height: 400px;
+    margin-right: auto;
+}

@@ -1,4 +1,7 @@
 from cubedata import CubeData
+import urllib
+import json
+import pyodide
 
 from js import (
     console,
@@ -129,11 +132,33 @@ def action_start_from_text(*ags, **kws):
     cube_modal = Element("cube-modal")
     cube_modal.remove_class("active")
 
-def action_click_card(*ags, **kws):
-    card_name = ags[0].path[0].innerHTML
-    if card_name != "**hidden**":
-        console.log(card_name, "clicked")
+def get_image_uri(card_name):
+    scryfall_api_url = f"https://api.scryfall.com/cards/named?exact={urllib.parse.quote_plus(card_name)}"
+    response = pyodide.open_url(scryfall_api_url)
+    scryfall_data = json.loads(response.read())
+    return str(scryfall_data["image_uris"]["normal"])
 
+def action_click_card(*ags, **kws):
+    if ags[0].path[0].localName != "li":
+        return
+    
+    card_name = ags[0].path[0].innerHTML
+
+    if card_name != "**hidden**":
+        modal = Element("card-modal")
+        modal.add_class("active")
+
+        image_uri = get_image_uri(card_name)
+
+        image = Element("card-image")
+        image.element.setAttribute('src', image_uri)
+
+
+
+
+def action_close_card_modal(*ags, **kws):
+    modal = Element("card-modal")
+    modal.remove_class("active")
 
 ## Start Here
 
